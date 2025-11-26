@@ -10,7 +10,7 @@ import database_test.util.Colors;
 import java.util.Scanner;
 
 public class DataBaseMenu {
-    /* Variables | Objetos de referencia a las clases */
+    /* Variables | Objects referencing classes */
     DataBaseInsertion dbi = new DataBaseInsertion();
     DataBaseDelete dbd = new DataBaseDelete();
     DataBaseVerification dbv = new DataBaseVerification();
@@ -20,7 +20,7 @@ public class DataBaseMenu {
     private final Scanner scn = new Scanner(System.in);
 
     /*
-     * Inicia la conexion cuanod inicie el programa
+     * Starts the connection once the program starts
      */
     static {
         DataBaseConexion.connectDataBase();
@@ -32,7 +32,7 @@ public class DataBaseMenu {
     }
 
     /*
-     * Menu de opciones
+     * Options menu
      */
     private void menu() {
         while (true) {
@@ -40,18 +40,18 @@ public class DataBaseMenu {
             System.out.println(Colors.BOLD + Colors.CYAN + "║" + Colors.RESET + "    " + Colors.BOLD + Colors.BRIGHT_WHITE + "MENU PRINCIPAL" + Colors.RESET + "         " + Colors.BOLD + Colors.CYAN + "║" + Colors.RESET);
             System.out.println(Colors.BOLD + Colors.CYAN + "╚═══════════════════════════╝" + Colors.RESET);
 
-            System.out.println(Colors.BRIGHT_GREEN + "(1)" + Colors.RESET + " - Insercion datos");
-            System.out.println(Colors.BRIGHT_BLUE + "(2)" + Colors.RESET + " - Eliminacion datos");
-            System.out.println(Colors.BRIGHT_YELLOW + "(3)" + Colors.RESET + " - Verificacion datos");
-            System.out.println(Colors.BRIGHT_MAGENTA + "(4)" + Colors.RESET + " - Actualizacion datos");
+            System.out.println(Colors.BRIGHT_GREEN + "(1)" + Colors.RESET + " - Data entry");
+            System.out.println(Colors.BRIGHT_BLUE + "(2)" + Colors.RESET + " - Data deletion");
+            System.out.println(Colors.BRIGHT_YELLOW + "(3)" + Colors.RESET + " - Data verification");
+            System.out.println(Colors.BRIGHT_MAGENTA + "(4)" + Colors.RESET + " - Data update");
             System.out.println(Colors.BRIGHT_RED + "(5)" + Colors.RESET + " - Quit programm");
 
-            System.out.print("\n" + Colors.BOLD + "Ingresa una opcion: " + Colors.RESET);
+            System.out.print("\n" + Colors.BOLD + "Select an option: " + Colors.RESET);
             int userSelect = scn.nextInt();
             scn.nextLine();
 
             if (userSelect == 5) {
-                System.out.println("\n" + Colors.BRIGHT_MAGENTA + "¡Hasta luego!" + Colors.RESET + "\n");
+                System.out.println("\n" + Colors.BRIGHT_MAGENTA + "See you later!" + Colors.RESET + "\n");
                 scn.close();
                 break;
             }
@@ -61,7 +61,7 @@ public class DataBaseMenu {
     }
 
     /*
-     * Menu de selecciones
+     * Selection menu
      */
     private void optionsSelect(int userSelect) {
         switch (userSelect) {
@@ -77,7 +77,7 @@ public class DataBaseMenu {
             case 4:
                 dbu.updateInformation(scn);
             default:
-                System.err.println("\n" + Colors.RED + "❌ Opcion invalida. Ingrese otra opcion." + Colors.RESET + "\n");
+                System.err.println("\n" + Colors.RED + "Invalid option. Select another option." + Colors.RESET + "\n");
                 break;
         }
     }
