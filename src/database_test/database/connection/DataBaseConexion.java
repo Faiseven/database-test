@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBaseConexion {
-    /* Variabl | Objets used for the database */
+    /* Variable | Objets used for the database */
     private static Connection conn;
     private static final String DATA_BASE_TABLE = """
                 CREATE TABLE IF NOT EXISTS persona(

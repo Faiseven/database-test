@@ -19,33 +19,36 @@ public class DataBaseUpdate {
         conn = DataBaseConexion.getConnection();
     }
 
+    /*
+     * Method to update the information
+     */
     public void updateInformation(Scanner scn) {
         System.out.println("\n" + Colors.BOLD + Colors.BRIGHT_MAGENTA + "═══════════════════════════════" + Colors.RESET);
-        System.out.println(Colors.BOLD + Colors.BRIGHT_MAGENTA + "    ACTUALIZACIÓN DE DATOS" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.BRIGHT_MAGENTA + "    DATA UPDATE" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_MAGENTA + "═══════════════════════════════" + Colors.RESET + "\n");
 
-        System.out.println(Colors.YELLOW + "📋 INFORMACIÓN DISPONIBLE:" + Colors.RESET + "\n");
+        System.out.println(Colors.YELLOW + "📋 INFORMATION AVAIBLE:" + Colors.RESET + "\n");
         DataBasePrint.printData();
 
-        System.out.print("\n" + Colors.CYAN + "➤ Ingresa el ID que desea actualizar: " + Colors.RESET);
+        System.out.print("\n" + Colors.CYAN + "➤ Enter the ID you want to update: " + Colors.RESET);
         try {
             idUser = scn.nextInt();
             scn.nextLine();
         } catch (Exception ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error: Ingresa un ID valido." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error: Invalid ID." + Colors.RESET + "\n");
             scn.nextLine();
             return;
         }
 
-        System.out.print(Colors.CYAN + "➤ Ingrese el nuevo nombre: " + Colors.RESET);
+        System.out.print(Colors.CYAN + "➤ Enter the new name: " + Colors.RESET);
         newName = scn.nextLine();
 
-        System.out.print(Colors.CYAN + "➤ Ingrese la nueva edad: " + Colors.RESET);
+        System.out.print(Colors.CYAN + "➤ Enter the new age: " + Colors.RESET);
         try {
             newAge = scn.nextInt();
             scn.nextLine();
         } catch (Exception ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error: Ingresa un numero entero." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error: Invalid age." + Colors.RESET + "\n");
             scn.nextLine();
             return;
         }
@@ -61,13 +64,13 @@ public class DataBaseUpdate {
             int affectedLines = pst.executeUpdate();
 
             if (affectedLines > 0) {
-                System.out.println("\n" + Colors.BRIGHT_GREEN + "✓ Informacion actualizada correctamente." + Colors.RESET + "\n");
+                System.out.println("\n" + Colors.BRIGHT_GREEN + "Information correctly updated." + Colors.RESET + "\n");
                 DataBasePrint.printData();
             } else {
-                System.err.println("\n" + Colors.YELLOW + "⚠ No se encontro el ID ingresado." + Colors.RESET + "\n");
+                System.err.println("\n" + Colors.YELLOW + "The ID was not found." + Colors.RESET + "\n");
             }
         } catch (SQLException ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error al actualizar el registro." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error updating the registry." + Colors.RESET + "\n");
         }
     }
 }

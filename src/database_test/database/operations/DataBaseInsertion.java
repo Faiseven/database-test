@@ -17,42 +17,42 @@ public class DataBaseInsertion {
     }
 
     /*
-     * Insercion de datos a la tabla
+     * Inserting data into the table
      */
     public void insertData(Scanner scn) {
         System.out.println("\n" + Colors.BOLD + Colors.BRIGHT_GREEN + "═══════════════════════════════" + Colors.RESET);
-        System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + "    INSERCIÓN DE DATOS" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + "    DATA ENTRY" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + "═══════════════════════════════" + Colors.RESET + "\n");
 
-        /* Pedimos nombre y edad */
-        System.out.print(Colors.CYAN + "➤ Ingrese el nombre: " + Colors.RESET);
+        /* Ask for name and age */
+        System.out.print(Colors.CYAN + "➤ Enter the name: " + Colors.RESET);
         nameUser = scn.nextLine();
 
-        System.out.print(Colors.CYAN + "➤ Ingrese la edad: " + Colors.RESET);
+        System.out.print(Colors.CYAN + "➤ Enter your age: " + Colors.RESET);
         try {
             ageUser = scn.nextInt();
             scn.nextLine();
         } catch (Exception ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error: Ingresa un numero entero." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error: Enter an integer." + Colors.RESET + "\n");
             return;
         }
 
-        /* Insercion de datos a la tabla */
+        /* Inserting data into the table */
         try {
             PreparedStatement ps = conn.prepareStatement(
                     "INSERT INTO persona(nombre, edad) VALUES(?, ?)"
             );
 
-            /* Establecemos valores | parametros y ejecutamos el cambio */
+            /* Set values | parameters and execute the update */
             ps.setString(1, nameUser);
             ps.setInt(2, ageUser);
             ps.executeUpdate();
 
-            System.out.println("\n" + Colors.BRIGHT_GREEN + "✓ Datos insertados correctamente!" + Colors.RESET + "\n");
+            System.out.println("\n" + Colors.BRIGHT_GREEN + "Data successfully entered!" + Colors.RESET + "\n");
 
             DataBasePrint.printData();
         } catch (SQLException ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error insertando datos en la base de datos." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error inserting data into the database." + Colors.RESET + "\n");
         }
     }
 }

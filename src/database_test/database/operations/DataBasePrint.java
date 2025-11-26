@@ -16,7 +16,7 @@ public class DataBasePrint {
     }
 
     /*
-     * Impresion de datos en la tabla
+     * Printing data in the table
      */
     public static void printData() {
         try {
@@ -28,14 +28,14 @@ public class DataBasePrint {
             System.out.println(Colors.BOLD + Colors.MAGENTA + "╔═════════════════════════════════════════════════╗" + Colors.RESET);
             System.out.println(Colors.BOLD + Colors.MAGENTA + "║" + Colors.RESET +
                     Colors.BOLD + "  ID  " + Colors.RESET + Colors.MAGENTA + "│" + Colors.RESET +
-                    Colors.BOLD + "      NOMBRE      " + Colors.RESET + Colors.MAGENTA + "│" + Colors.RESET +
-                    Colors.BOLD + "  EDAD  " + Colors.RESET +
+                    Colors.BOLD + "      NAME      " + Colors.RESET + Colors.MAGENTA + "│" + Colors.RESET +
+                    Colors.BOLD + "  AGE  " + Colors.RESET +
                     Colors.BOLD + Colors.MAGENTA + "║" + Colors.RESET);
             System.out.println(Colors.BOLD + Colors.MAGENTA + "╠═════════════════════════════════════════════════╣" + Colors.RESET);
 
             boolean hasData = false;
 
-            /* Mientras aun haya otra fila */
+            /* While there is still another row */
             while (rs.next()) {
                 hasData = true;
                 int id = rs.getInt("id");
@@ -54,13 +54,13 @@ public class DataBasePrint {
             System.out.println(Colors.BOLD + Colors.MAGENTA + "╚═════════════════════════════════════════════════╝" + Colors.RESET);
 
             if (!hasData) {
-                System.out.println(Colors.YELLOW + "\n⚠ No hay registros disponibles en la tabla." + Colors.RESET + "\n");
+                System.out.println(Colors.YELLOW + "\nThere are no records in the table" + Colors.RESET + "\n");
             } else {
                 System.out.println(); // Salto de línea al final
             }
 
         } catch (SQLException e) {
-            System.err.println("\n" + Colors.RED + "❌ Error al obtener los datos de la base de datos." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error retrieving data from the database." + Colors.RESET + "\n");
         }
     }
 }

@@ -17,17 +17,20 @@ public class DataBaseVerification {
         conn = DataBaseConexion.getConnection();
     }
 
+    /*
+     * Method to verify it there is any ID
+     */
     public void verifcationData(Scanner scn) {
         System.out.println("\n" + Colors.BOLD + Colors.BRIGHT_YELLOW + "═══════════════════════════════" + Colors.RESET);
-        System.out.println(Colors.BOLD + Colors.BRIGHT_YELLOW + "    VERIFICACIÓN DE DATOS" + Colors.RESET);
+        System.out.println(Colors.BOLD + Colors.BRIGHT_YELLOW + "    DATA VERIFICATION" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_YELLOW + "═══════════════════════════════" + Colors.RESET + "\n");
 
-        System.out.print(Colors.CYAN + "➤ Ingresa el ID que desea verificar: " + Colors.RESET);
+        System.out.print(Colors.CYAN + "➤ Enter the ID you want to verify: " + Colors.RESET);
         try {
             idUser = scn.nextInt();
             scn.nextLine();
         } catch (Exception ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error: Ingresa un ID valido." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error: Invalid ID." + Colors.RESET + "\n");
             scn.nextLine();
             return;
         }
@@ -40,22 +43,22 @@ public class DataBaseVerification {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                System.out.println("\n" + Colors.BRIGHT_GREEN + "✓ Registro encontrado:" + Colors.RESET);
+                System.out.println("\n" + Colors.BRIGHT_GREEN + "Record found:" + Colors.RESET);
                 System.out.println(Colors.BOLD + Colors.CYAN + "┌─────────────────────────────────────┐" + Colors.RESET);
                 System.out.println(Colors.CYAN + "│" + Colors.RESET + " " + Colors.BOLD + "ID:" + Colors.RESET + " " +
                         Colors.BRIGHT_WHITE + rs.getInt("id") + Colors.RESET + " " +
-                        Colors.CYAN + "│" + Colors.RESET + " " + Colors.BOLD + "Nombre:" + Colors.RESET + " " +
+                        Colors.CYAN + "│" + Colors.RESET + " " + Colors.BOLD + "Name:" + Colors.RESET + " " +
                         Colors.BRIGHT_WHITE + rs.getString("nombre") + Colors.RESET + " " +
-                        Colors.CYAN + "│" + Colors.RESET + " " + Colors.BOLD + "Edad:" + Colors.RESET + " " +
+                        Colors.CYAN + "│" + Colors.RESET + " " + Colors.BOLD + "Age:" + Colors.RESET + " " +
                         Colors.BRIGHT_WHITE + rs.getInt("edad") + Colors.RESET + " " +
                         Colors.CYAN + "│" + Colors.RESET);
                 System.out.println(Colors.BOLD + Colors.CYAN + "└─────────────────────────────────────┘" + Colors.RESET + "\n");
             } else {
-                System.out.println("\n" + Colors.YELLOW + "⚠ No existe ningun registro con ese ID." + Colors.RESET + "\n");
+                System.out.println("\n" + Colors.YELLOW + "There is no record with that ID." + Colors.RESET + "\n");
             }
 
         } catch (Exception ignored) {
-            System.err.println("\n" + Colors.RED + "❌ Error: No se pudo verificar la existencia del ID." + Colors.RESET + "\n");
+            System.err.println("\n" + Colors.RED + "Error: Could not verify the existence of the ID." + Colors.RESET + "\n");
         }
     }
 }
